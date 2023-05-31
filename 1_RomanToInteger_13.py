@@ -43,6 +43,13 @@ class Solution(object):
         return integer
 
 
-s = input('Enter Roman Number: ')
+# s = input('Enter Roman Number: ')
+# obj = Solution()
+# print('Integer Number: ', obj.romanToInt(s))
+s = input()
 obj = Solution()
-print('Integer Number: ', obj.romanToInt(s))
+string = ''
+for i in s:
+    if i != '"':
+        string += i
+print(obj.romanToInt(string))
