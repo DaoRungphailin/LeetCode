@@ -154,3 +154,13 @@ print(obj.addTwoNumbers(l1, l2))
 #         ret = list(map(int, list(str(n1 + n2))))
 
 #         return self.pylist_to_listnode(ret, len(ret))
+################## Reverse function #################
+    
+# def reverseList(head: ListNode) -> ListNode:
+#     prev = None
+#     while head:
+#         next_node = head.next
+#         head.next = prev
+#         prev = head
+#         head = next_node
+#     return prev
