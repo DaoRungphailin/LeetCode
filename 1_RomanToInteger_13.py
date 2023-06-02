@@ -28,7 +28,7 @@ class Solution(object):
         :rtype: int
         """
         roman = {"M": 1000, "CM": 900, "D": 500, "CD": 400, "C": 100,
-                 "XC": 90, "L": 50, "XL": 40, "X": 10, "V": 5, "IV": 4, "I": 1}
+                 "XC": 90, "L": 50, "XL": 40,  "X": 10, "IX": 9, "V": 5, "IV": 4, "I": 1}
         i = 0
         integer = 0
 
@@ -43,13 +43,10 @@ class Solution(object):
         return integer
 
 
-# s = input('Enter Roman Number: ')
-# obj = Solution()
-# print('Integer Number: ', obj.romanToInt(s))
-s = input()
+s = input('Enter Roman Number: ')
 obj = Solution()
 string = ''
 for i in s:
     if i != '"':
         string += i
-print(obj.romanToInt(string))
+print('Integer Number: ', obj.romanToInt(string))

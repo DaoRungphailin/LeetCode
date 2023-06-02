@@ -33,6 +33,10 @@ class Solution(object):
         coins.sort(reverse=True)
         count = 0
         i = 0
+        if amount == 0 :
+            return 0    
+        if min(coins) > amount:
+            return -1
         while(amount != 0):
             if amount >= coins[i]:
                 print('amount: ',amount)
