@@ -21,12 +21,13 @@ Example 3:
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
 '''
-
 # Definition for singly-linked list.
-class ListNode(object):
+
+
+class Node:
     def __init__(self, val=0, next=None):
         self.val = val
-        self.next = next
+        self.next = None
 
 
 class LinkedList:
@@ -61,11 +62,11 @@ class LinkedList:
             p.previous = t
             t.next = p
             self.tail = p
-
+            
     def len(self):
         cur = self.head
         count = 0
-        while (cur):
+        while(cur):
             count += 1
             cur = cur.next
         return count
@@ -73,7 +74,7 @@ class LinkedList:
     def printList(self):
         temp = self.head
         while (temp):
-            print(temp.data + ", ")
+            print(temp.data, end=" ")
             temp = temp.next
 
 
@@ -84,35 +85,29 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        l1_LL = LinkedList()
-        l2_LL = LinkedList()
-        result_lst = LinkedList()
-
-        l1_LL.printList()
-        print(type(l1_LL))
 
         # Use reverse function
-        l1_LL.reverse(l1_LL)
-        l2_LL.reverse(l2_LL)
-        
+        # Reverse with differrence function
+        l1[::-1]
+        l2.reverse()
+
         # change from string to int
         l1_num = ""
         l2_num = ""
-        for i in range(l1_LL.len()):
+        for i in range(len(l1)):
             l1_num += l1[i]
-        for i in range(l2_LL.len()):
+        for i in range(len(l2)):
             l2_num += l2[i]
-        print(l1_num)
+
         # result
-        # result = int(l1_num) + int(l2_num)
-        # result_lst = []
-        # for (i) in str(result):
-        #     result_lst.append(int(i))
+        result = int(l1_num) + int(l2_num)
+        result_lst = []
+        for (i) in str(result):
+            result_lst.append(int(i))
 
-        # # reverse result ! ! !
-        # # Can use result_lst[::-1] as REVERSE Function for List
-        # return result_lst.reverse(result_lst)
-
+        # reverse result ! ! !
+        # Can use result_lst[::-1] as REVERSE Function for List
+        return result_lst[::-1]
 
 # Main
 obj = Solution()
@@ -122,3 +117,40 @@ l1 = inp[0].split(',')
 l2 = inp[1].split(',')
 
 print(obj.addTwoNumbers(l1, l2))
+
+
+#################################### Leet Code Ans ###################################
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution:
+#     def listnode_to_pylist(self, listnode):
+#         ret = []
+#         while True:
+#             ret.append(listnode.val)
+#             if listnode.next != None:
+#                 listnode = listnode.next
+#             else:
+#                 return ret
+
+#     def pylist_to_listnode(self, pylist, link_count):
+#         if len(pylist) > 1:
+#             ret = precompiled.listnode.ListNode(pylist.pop())
+#             ret.next = self.pylist_to_listnode(pylist, link_count)
+#             return ret
+#         else:
+#             return precompiled.listnode.ListNode(pylist.pop(), None)
+    
+#     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+#         l1_ = self.listnode_to_pylist(l1)
+#         l2_ = self.listnode_to_pylist(l2)
+        
+#         l1_.reverse()
+#         n1 = int(''.join([ str(_) for _ in l1_]))
+#         l2_.reverse()
+#         n2 = int(''.join([ str(_) for _ in l2_]))
+#         ret = list(map(int, list(str(n1 + n2))))
+
+#         return self.pylist_to_listnode(ret, len(ret))
