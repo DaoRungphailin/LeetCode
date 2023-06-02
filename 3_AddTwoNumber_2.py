@@ -21,31 +21,33 @@ Example 3:
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
 '''
+
 # Definition for singly-linked list.
-class Node:
+class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
-        self.next = None
-        
+        self.next = next
+
+
 class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
-        
+
     def isEmpty(self):
         return self.head == None
-            
-    def reverse(self,lst):
+
+    def reverse(self, lst):
         prev = None
         cur = self.head
         reverse = []
-        while cur.next != None:
+        while cur != None:
             next = cur.next
             cur.next = prev
             prev = cur
             cur = next
         self.head = prev
-        
+
     def append(self, item):
         # Code Here
         p = Node(item)
@@ -59,13 +61,22 @@ class LinkedList:
             p.previous = t
             t.next = p
             self.tail = p
-    
+
+    def len(self):
+        cur = self.head
+        count = 0
+        while (cur):
+            count += 1
+            cur = cur.next
+        return count
+
     def printList(self):
         temp = self.head
-        while(temp):
-            print(temp.data, end=" ")
+        while (temp):
+            print(temp.data + ", ")
             temp = temp.next
-        
+
+
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """
@@ -73,30 +84,41 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
+        l1_LL = LinkedList()
+        l2_LL = LinkedList()
+        result_lst = LinkedList()
+
+        l1_LL.printList()
+        print(type(l1_LL))
+
+        # Use reverse function
+        l1_LL.reverse(l1_LL)
+        l2_LL.reverse(l2_LL)
+        
+        # change from string to int
+        l1_num = ""
+        l2_num = ""
+        for i in range(l1_LL.len()):
+            l1_num += l1[i]
+        for i in range(l2_LL.len()):
+            l2_num += l2[i]
+        print(l1_num)
+        # result
+        # result = int(l1_num) + int(l2_num)
+        # result_lst = []
+        # for (i) in str(result):
+        #     result_lst.append(int(i))
+
+        # # reverse result ! ! !
+        # # Can use result_lst[::-1] as REVERSE Function for List
+        # return result_lst.reverse(result_lst)
+
+
+# Main
 obj = Solution()
 inp = input('Enter l1 and l2: ').split('/')
-l1 = LinkedList()
-l2 = LinkedList()
-result_lst = LinkedList()
-l1_num = ""
-l2_num = ""
 
 l1 = inp[0].split(',')
 l2 = inp[1].split(',')
 
-#Use reverse function    
-l1.reverse()
-l2.reverse()
-
-#change from string to int
-for i in l1:
-    l1_num += i
-for i in l2:
-    l2_num += i
-    
-#result
-result = int(l1_num) + int(l2_num)
-result_lst = [int(x) for x in str(result)]
-#reverse resault
-result_lst.reverse()
-print(result_lst)
+print(obj.addTwoNumbers(l1, l2))
